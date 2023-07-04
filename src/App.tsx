@@ -1,24 +1,21 @@
 import React from 'react';
-import './App.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Navbar} from 'react-bootstrap';
+import SearchBar from "./search-bar/SearchBar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Navbar expand="lg" className="bg-body-tertiary">
+            <Container fluid>
+                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll"/>
+                <Navbar.Collapse id="navbarScroll">
+                    <SearchBar/>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 }
 
 export default App;

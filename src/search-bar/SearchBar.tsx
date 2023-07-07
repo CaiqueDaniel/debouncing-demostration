@@ -26,7 +26,7 @@ export default function SearchBar(): JSX.Element {
     const [timeoutRef, setTimeoutRef] = useState<NodeJS.Timeout>();
     const onInput = (evt: React.FormEvent<HTMLInputElement>) => setSearch(evt.currentTarget.value);
 
-    const searchWithDebouncing = () => {
+    const  searchAction = () => {
         clearTimeout(timeoutRef);
 
         if (!search?.length) {
@@ -40,13 +40,13 @@ export default function SearchBar(): JSX.Element {
             const {data: response} = await axios.get<APIItems[]>(`${api}/${search}`);
 
             setItems(response);
-        }, 1500);
+        }, 1000);
 
         setTimeoutRef(ref);
     }
 
     useEffect(() => {
-        searchWithDebouncing();
+        searchAction();
     }, [search]);
 
     return (
